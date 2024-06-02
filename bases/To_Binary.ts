@@ -19,11 +19,17 @@ export const BINARY = (num: number): string => {
 // 3 / 2 -> 2, resta 1
 // 2 / 2 -> 1, resta 0
 // 1 / 2 -> 0, resta 1
-
 // 0101, ao contraio 1010 -> 0b1010
 // (10)10 == (0b1010)2
 
-function binaryInt(num: number): string {
+/**
+ * @description retorna a conversao inteira de base 10 p/ base 2
+ */
+export function binaryInt(num: number = 0): string {
+
+  if(num === 0) return '0b0'
+  
+  num = Math.floor(num)
   let digits = []
 
   while(num > 0){
@@ -47,7 +53,17 @@ function binaryInt(num: number): string {
 // 0.6.... repete infinitamente
 // (10.6)10 -> (0b1010,1001)2
 
-function binaryPrecisionFloat(num: number): string {
+
+/**
+ * @description returna o valor de conversao da base 10 com casa decimal p/ base 2
+ */
+export function binaryFloat(num: number = 0): string {
+
+  if(num === 0) return '0b0'
+  // se o nmero for inteiro retorna a conversao inteira
+  if(Number.isInteger(num)){
+    return binaryInt(num)
+  }
   
   const int = Math.floor(num)
   const float = num - int
@@ -55,18 +71,11 @@ function binaryPrecisionFloat(num: number): string {
   return `${binaryInt(int)},${fractionalBinary(float)}`
 }
 
-function binaryFloat(num: number): string {
-  
-  const int = Math.floor(num)
-  const float = num - int
 
-  if(float === 0.5) return `${binaryInt(int)},1`
-
-  return `${binaryInt(int)},${fractionalBinary(float)}`
-}
-
-
-function fractionalBinary(frac: number): string {
+/**
+ * @description Calcula a parte fracional de um float point p/ binario
+ */
+export function fractionalBinary(frac: number): string {
   
   let loopguard = new Set<number>()
   let binary: number[] = []

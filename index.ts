@@ -1,12 +1,6 @@
-import { BINARY } from './bases/To_Binary'
+import HDBO from './bases'
 
+const input = 27
+const binario = HDBO.BINARY(input)
 
-// console.log(BINARY(10))
-// console.log(BINARY(-10))
-
-console.log(BINARY(12))
-console.log(BINARY(12.5))
-
-
-console.log(BINARY(0))
-console.log(BINARY(1))
+console.log(binario)
