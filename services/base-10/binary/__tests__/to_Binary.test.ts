@@ -1,6 +1,8 @@
 import 'jest-extended'
-import { BINARY, binaryInt, binaryFloat, fractionalBinary } from '../bases/To_Binary'
-import { prefixes } from '../bases/prefixes'
+import { prefixes }                        from '../../../prefixes'
+import { BINARY }                          from '../Binary'
+import { binaryInt }                       from '../BinaryInt'
+import { binaryFloat, fractionalBinary }   from '../BinaryFloat'
 
 
 describe("método BINARY", () => {
